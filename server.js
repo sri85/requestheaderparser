@@ -11,7 +11,7 @@ const hostinfo = require('./hostInfo');
 
 const app = express();
 
-app.get('/api/whoami', function (request, response) {
+app.get('/api/userinfo', function (request, response) {
     let userInfo;
     hostinfo.getHostIp().then(ipAdress =>{
 
