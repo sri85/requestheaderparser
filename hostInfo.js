@@ -12,7 +12,7 @@ class HostInfo {
 
         const options = {
             method: "GET",
-            uri: "https://api.ipify.org?format=json",
+            uri: "https://api.ipify.org/?format=json",
             resolveWithFullResponse: true
 
         };
@@ -22,19 +22,20 @@ class HostInfo {
     }
 
     getUserLanguage(header){
-        return header.split(',')[0];
+        if (this.isInputValid(header)){
+            return header.split(',')[0];
+        }
     }
 
     getUserOS(header){
-        return header.split(' ')[1].replace('(','').replace(';','')
+        if(this.isInputValid()){
+            return header.split(' ')[1].replace('(','').replace(';','');
+        }
     }
 
-
-    sanitizeHeaders(inputString,characterToReplace){
-        return inputString.replace(characterToReplace,'');
-
+    isInputValid(input){
+        return !(input === null || input === undefined);
     }
-
 }
 
 module.exports = new HostInfo();

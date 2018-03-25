@@ -12,6 +12,7 @@ const hostinfo = require('./hostInfo');
 const app = express();
 
 app.get('/api/userinfo', function (request, response) {
+    console.log(request.headers["accept-language"]);
     let userInfo;
     hostinfo.getHostIp().then(userIpAddress =>{
 
