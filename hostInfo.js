@@ -18,6 +18,8 @@ class HostInfo {
         };
         return rp(options).then(response => {
             return Promise.resolve((JSON.parse(response.body)["ip"]))
+        }).catch(err =>{
+            return Promise.resolve("{error:'something went wrong'}");
         });
     }
 
