@@ -21,22 +21,17 @@ class HostInfo {
         });
     }
 
-    getUserOS() {
+    getUserLanguage(header){
+        return header.split(',')[0];
+    }
 
-        let platform = process.platform;
-        let osName;
-        switch (platform) {
-            case "darwin":
-                osName = "Macintosh";
-                break;
-            case "win32":
-                osName = "Windows";
-                break;
-            default:
-                osName = "unix";
+    getUserOS(header){
+        return header.split(' ')[1].replace('(','').replace(';','')
+    }
 
-        }
-        return osName;
+
+    sanitizeHeaders(inputString,characterToReplace){
+        return inputString.replace(characterToReplace,'');
 
     }
 

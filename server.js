@@ -13,12 +13,12 @@ const app = express();
 
 app.get('/api/userinfo', function (request, response) {
     let userInfo;
-    hostinfo.getHostIp().then(ipAdress =>{
+    hostinfo.getHostIp().then(userIpAddress =>{
 
         userInfo = {
-            "ipaddress": ipAdress,
-            "language": request.headers["accept-language"].split(',')[0],
-            "software": request.headers["user-agent"].split(' ')[1].replace('(','').replace(';','')
+            "ipaddress": userIpAddress,
+            "language": hostinfo.getUserLanguage(request.headers["accept-language"]),
+            "software": hostinfo.getUserOS(request.headers["user-agent"])
         };
 
       response.json(userInfo);
