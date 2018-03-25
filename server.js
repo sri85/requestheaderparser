@@ -18,7 +18,7 @@ app.get('/api/userinfo', function (request, response) {
         userInfo = {
             "ipaddress": ipAdress,
             "language": request.headers["accept-language"].split(',')[0],
-            "software": hostinfo.getUserOS()
+            "software": request.headers["user-agent"].split(' ')[1].replace('(','').replace(';','')
         };
 
       response.json(userInfo);
