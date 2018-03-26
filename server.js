@@ -25,7 +25,7 @@ app.get('/api/userinfo', function (request, response) {
 
       response.json(userInfo).end();
     });
-    // response.end();
+
 
 });
 app.listen(3000, function (err, data) {
