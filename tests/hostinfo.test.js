@@ -24,7 +24,7 @@ describe("Host Info test suite", () => {
     });
 
     it("getUserLanguage returns empty string if an empty string is passed  as an input", () => {
-        expect(hostinfo.getUserLanguage("")).to.equal('');
+        expect(hostinfo.getUserLanguage("")).to.equal(undefined);
     });
 
     it("getUserOS returns undefined if an null is passed as an input", () => {

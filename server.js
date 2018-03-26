@@ -12,19 +12,20 @@ const hostinfo = require('./hostInfo');
 const app = express();
 
 app.get('/api/userinfo', function (request, response) {
-    console.log(request.headers["accept-language"]);
+
     let userInfo;
-    hostinfo.getHostIp().then(userIpAddress =>{
+    response.set({'Content-Type': 'application/json'});
+    return hostinfo.getHostIp().then(userIpAddress =>{
 
         userInfo = {
-            "ipaddress": userIpAddress,
-            "language": hostinfo.getUserLanguage(request.headers["accept-language"]),
-            "software": hostinfo.getUserOS(request.headers["user-agent"])
+            'ipaddress': userIpAddress,
+            'language': hostinfo.getUserLanguage(request.headers["accept-language"]),
+            'software': hostinfo.getUserOS(request.headers["user-agent"])
         };
 
-      response.json(userInfo);
+      response.json(userInfo).end();
     });
-
+    // response.end();
 
 });
 app.listen(3000, function (err, data) {

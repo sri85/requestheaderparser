@@ -30,13 +30,13 @@ class HostInfo {
     }
 
     getUserOS(header){
-        if(this.isInputValid()){
+        if(this.isInputValid(header)){
             return header.split(' ')[1].replace('(','').replace(';','');
         }
     }
 
     isInputValid(input){
-        return !(input === null || input === undefined);
+        return !(input === null || input === undefined || input === "");
     }
 }
 
